@@ -1,0 +1,39 @@
+ 
+{% extends 'myapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-7"></div>
+            <div class="col-md-5 jumbotron">
+                <h3 class="text-center">
+                    Registration Form/(SignUp)
+                </h3><hr>
+                <div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div>
+                          <button class="btn btn-outline-success btn-block" type="submit">Submit</button>
+                          <small class="text-muted">
+                            Already have an account? <a class="ml-2" href="">Log In Here</a>
+                          </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            {% include 'myapp/footer.html' %}
+          </div>
+        </div>
+
+    </div>
+
+{% endblock %}

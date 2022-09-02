@@ -1,0 +1,39 @@
+ 
+{% extends 'myapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="row container-fluid jumbotron ml-2 bg-secondary">
+
+        <div class="col-md-4 offset-2">
+            <div class="card">
+                <img src="{{ user.profile.image.url }}" class="card-img-top" alt="My image">
+                <div class="card-body">
+                  <h5 class="card-title">Profile Image</h5>
+                  <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+                  <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 offset-2 m-3">
+          
+            <form action="" method="POST" enctype="multipart/form-data">
+
+              {% csrf_token %}
+              
+              {{ u_form|crispy }}
+              {{ p_form|crispy }}
+  
+              <div class="form-group">
+                <button class="btn btn-success btn-block" type="submit">Update</button>
+              </div>
+  
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

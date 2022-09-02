@@ -1,0 +1,36 @@
+ 
+{% extends 'myapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+
+            <!--<div class="col-md-7"></div>-->
+            <div class="col-md-6 offset-3 jumbotron">
+                <h3 class="text-center">
+                    Create Post
+                </h3><hr>
+                <div>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div>
+                          <button class="btn btn-outline-success btn-block" type="submit">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            {% include 'myapp/footer.html' %}
+          </div>
+        </div>
+
+    </div>
+
+{% endblock %}

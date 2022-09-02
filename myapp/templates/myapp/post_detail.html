@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card">
+                <img src="{{ post.image.url }}" alt="">
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div>
+                <h2 class="text-center">{{ post.title }}</h2><hr>
+                <h4>
+                    Posted by: @{{ post.author }} on <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                </h4><br>
+                <h4>Name: {{ post.author.first_name }} {{ post.author.last_name }}</h4>
+                <h4>Email: <code>{{ post.author.email }}</code></h4><hr>
+                <h2 class="text-center">Details</h2><br>
+                <p>{{ post.description }}</p>
+            </div><br>
+            <hr>
+            <div>
+                {% if post.author == user %}
+
+                    <a class="btn btn-info mr-2" href="{% url 'post-update' post.id %}">Edit</a>
+                    <a class="btn btn-danger mr-2" href="{% url 'post-delete' post.id %}">Delete</a>
+
+                {% endif %}
+                <a class="btn btn-dark" href="{% url 'posts' %}">Back to Posts</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

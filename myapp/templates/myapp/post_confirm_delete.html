@@ -1,0 +1,35 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+
+            <!--<div class="col-md-7"></div>-->
+            <div class="col-md-6 offset-3 jumbotron">
+                <h3 class="text-center text-danger">
+                    Delete Post
+                </h3><hr>
+                <div>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h2>Are sure you wanna delete "{{ post.title }}"?</h2>
+                        <div>
+                          <button class="btn btn-outline-danger" type="submit">Delete</button>
+                          <a class="btn btn-outline-secondary" href="{% url 'post-detail' post.id %}">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            {% include 'myapp/footer.html' %}
+          </div>
+        </div>
+
+    </div>
+
+{% endblock %}

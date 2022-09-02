@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="jumbotron mt-2">
+                <div>
+                    <legend>LOGIN BELOW</legend><hr>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+        
+                    <input class="btn btn-outline-info mb-2" type="submit" value="Submit">
+                </form>
+
+                <div class="border-top">
+                    <small class="text-muted">
+                        Have no Account? <a class="ml-2" href="">REGISTER HERE</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
